@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sqlalchemy import Column, String, Integer, Date, FLOAT, Table
 from sqlalchemy.orm import relationship
 from models.base import Base
-from models.sn import Sn
+# from models.sn import Sn
 
 
 class Run(Base):
@@ -39,7 +39,7 @@ class Run(Base):
         self.proton = proton
         self.proton_energy = proton_energy
         self.nab_run = Nab.DataRun(directory, run_number, ignoreEventFile = event_bool)
-        if sn_source:
-            self.source = Sn()
+        # if sn_source:
+        #     self.source = Sn()
         # if cd_source:
         #     self.source = Cd()
