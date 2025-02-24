@@ -9,6 +9,7 @@ from datetime import date
 from models.base import Session, engine, Base
 from models.run import Run
 from models.pixel import Pixel
+from models.calibration import Calibration
 # from controllers.run_controller import RunController
 # from controllers.pixel_controller import PixelController
 
@@ -45,8 +46,12 @@ run = Run(run_number, bias_voltage, sn_source, cd_source, average_temp, number_s
 
 pixel = Pixel(run, 76, 1250, 50, 1250)
 
+cal = Calibration(pixel)
+print(cal.pixel)
+
 session.add(run)
-session.add(pixel)
+# session.add(pixel)
+# session.add(cal)
 
 session.commit()
 session.close() 

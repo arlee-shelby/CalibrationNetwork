@@ -12,6 +12,8 @@ class Pixel(Base):
     run_number = Column(Integer, ForeignKey('runs.run_number'))
     run = relationship('Run', back_populates='pixels')
     pixel_number = Column(Integer)
+    calibrations = relationship('Calibration', back_populates='pixel')
+
     calibration_flag = Column(String)
     ecap_fit_chi2 = Column(FLOAT)
     xray_fit_chi2 = Column(FLOAT)
