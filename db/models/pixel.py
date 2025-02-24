@@ -4,6 +4,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sqlalchemy import Column, Integer, Boolean, String, JSON, FLOAT, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base import Base
+from controllers.basic_controller import histogram
 
 class Pixel(Base):
     __tablename__ = 'pixels'
@@ -29,3 +30,4 @@ class Pixel(Base):
         trap_filter = run.nab_run.singleWaves().determineEnergyTiming(method='trap', params=[trap_rise, trap_length, trap_decay])
         self.trap_filter = trap_filter
         self.energy = trap_filter.data()['energy'].tolist()
+        self.source = run.source

@@ -22,3 +22,8 @@ class Calibration(Base):
 
     def __init__(self, pixel):
         self.pixel = pixel
+        self.source = pixel.source()
+        electron_hist = histogram(pixel.energy,pixel.run.source.electron_bins)
+        xray_hist = histogram(energy,run.source.xray_bins)
+        self.electron_hist = electron_hist
+        self.xray_hist = xray_hist
