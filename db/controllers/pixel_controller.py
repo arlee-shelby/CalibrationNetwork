@@ -10,7 +10,7 @@ session = Session()
 class PixelController():
     def __init__(pixel):
         self.pixel = pixel
-
+        
     def get_pixels():
         return session.query(Pixel).all()
 

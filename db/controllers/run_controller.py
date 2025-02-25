@@ -11,7 +11,8 @@ session = Session()
 
 class RunController:
     def __init__(self, run, directory, event_bool):
-        run.nab_run = Nab.DataRun(directory, run.run_number, ignoreEventFile = event_bool)
+        run.nab_run = True
+        self.run = Nab.DataRun(directory, run.run_number, ignoreEventFile = event_bool)
         session.commit()
     def get_runs():
         return session.query(Run).all()
