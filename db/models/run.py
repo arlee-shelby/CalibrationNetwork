@@ -39,7 +39,7 @@ class Run(Base):
         self.proton = proton
         self.proton_energy = proton_energy
         self.nab_run = Nab.DataRun(directory, run_number, ignoreEventFile = event_bool)
-
+        
         if run.sn_source:
             self.source = Sn()
         if run.cd_source:
