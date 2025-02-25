@@ -10,7 +10,7 @@ from models.base import Session, engine, Base
 from models.run import Run
 from models.pixel import Pixel
 from models.calibration import Calibration
-# from controllers.run_controller import RunController
+from controllers.run_controller import RunController
 # from controllers.pixel_controller import PixelController
 
 Base.metadata.create_all(engine)
@@ -42,8 +42,8 @@ proton_energy = int(df[df['RunID']==run_number]['Proton Energy'].iloc[0])
 
 directory = '/storage/home/hcoda1/4/ashelby8/scratch/ManitobaData/'
 
-run = Run(run_number, bias_voltage, sn_source, cd_source, average_temp, number_subruns, run_date, pulser, proton, proton_energy, directory, True)
-
+run = Run(run_number, bias_voltage, sn_source, cd_source, average_temp, number_subruns, run_date, pulser, proton, proton_energy)
+RunController(run, directory, True)
 pixel = Pixel(run, 76, 1250, 50, 1250)
 
 cal = Calibration(pixel)

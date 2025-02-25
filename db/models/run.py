@@ -1,7 +1,7 @@
 import sys
-nab_path = '/storage/home/hcoda1/4/ashelby8/Manitoba/pyNab/src'
-sys.path.append(nab_path)
-import nabPy as Nab
+# nab_path = '/storage/home/hcoda1/4/ashelby8/Manitoba/pyNab/src'
+# sys.path.append(nab_path)
+# import nabPy as Nab
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sqlalchemy import Column, String, Integer, Date, FLOAT, Table
@@ -27,7 +27,7 @@ class Run(Base):
     proton_energy = Column(Integer)
     pixels = relationship('Pixel', back_populates='run')
 
-    def __init__(self, run_number, bias_voltage, sn_source, cd_source, average_temp, number_subruns, date, pulser, proton, proton_energy, directory, event_bool):
+    def __init__(self, run_number, bias_voltage, sn_source, cd_source, average_temp, number_subruns, date, pulser, proton, proton_energy):
         self.run_number = run_number
         self.bias_voltage = bias_voltage
         self.sn_source = sn_source
@@ -38,9 +38,10 @@ class Run(Base):
         self.pulser = pulser
         self.proton = proton
         self.proton_energy = proton_energy
-        self.nab_run = Nab.DataRun(directory, run_number, ignoreEventFile = event_bool)
+        self.nab_run = None
+        # self.nab_run = Nab.DataRun(directory, run_number, ignoreEventFile = event_bool)
 
-        if run.sn_source:
-            self.source = Sn()
-        if run.cd_source:
-            self.source = Cd()
+        # if run.sn_source:
+        #     self.source = Sn()
+        # if run.cd_source:
+        #     self.source = Cd()
