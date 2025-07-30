@@ -22,13 +22,9 @@ class Pixel(Base):
     energy = Column(JSON)
     
 
-    def __init__(self, run, pixel_number, trap_rise, trap_length, trap_decay):
+    def __init__(self, run, pixel_number):
         self.pixel_number = pixel_number
         self.run = run
-        self.trap_rise = trap_rise
-        self.trap_length = trap_length
-        self.trap_decay = trap_decay
-        self.energy = None
         # run.nab_run.singleWaves().resetCuts()
         # run.nab_run.singleWaves().defineCut('pixel', '=', pixel_number)
         # trap_filter = run.nab_run.singleWaves().determineEnergyTiming(method='trap', params=[trap_rise, trap_length, trap_decay])

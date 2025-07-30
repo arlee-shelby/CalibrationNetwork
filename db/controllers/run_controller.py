@@ -10,12 +10,15 @@ from models.run import Run
 session = Session()
 
 class RunController:
-    def __init__(self, run, directory, event_bool):
-        run.nab_run = True
-        self.run = Nab.DataRun(directory, run.run_number, ignoreEventFile = event_bool)
-        session.commit()
+    # def __init__(self):
+    #     self.run = run
     def get_runs():
         return session.query(Run).all()
 
     def get_run_by_number(num):
         return session.query(Run).filter_by(run_number = num).all()[0]
+
+    def nab_run(self, run, directory, event_bool):
+        run.nab_run = True
+        self.nab_run = Nab.DataRun(directory, run.run_number, ignoreEventFile = event_bool)
+        session.commit()
